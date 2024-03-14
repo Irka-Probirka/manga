@@ -1,0 +1,90 @@
+'use client';
+
+import Image from 'next/image'
+import Link from "next/link";
+import ChangeThemeButton from "@/components/changeTheme";
+import {usePathname} from "next/navigation";
+import {useEffect, useRef, useState} from "react";
+
+const NavElem = ({href, children}) => {
+    const pathname = usePathname();
+    const [expandedClass, setExpandedClass] = useState('hover:bg-indigo-500 hover:text-white')
+
+    useEffect(() => {
+        if (pathname === href) {
+            setExpandedClass('bg-indigo-500 text-white')
+        } else {
+            setExpandedClass('hover:bg-indigo-500 hover:text-white')
+        }
+    }, [pathname])
+
+    return (
+        <li>
+            <Link href={href} className={`p-2 mx-2 rounded transition ${expandedClass}`}>
+                {children}
+            </Link>
+        </li>
+    )
+}
+
+const Header = () => {
+    const ref = useRef();
+    const pathname = usePathname();
+    const [bgClear, setBgClear] = useState(false);
+
+    // Блюр, когда перешли на страницу типа /c/[name]
+    useEffect(() => {
+        if (pathname.match(/^\/c\/[a-zA-Z0-9_-]+$/)) {
+            document.addEventListener('scroll', handleScroll);
+            setBgClear(true);
+        } else {
+            document.removeEventListener('scroll', handleScroll);
+            setBgClear(false);
+        }
+    }, [pathname]);
+
+    const handleScroll = function () {
+        if (Math.round(document.documentElement.scrollTop) === 0)
+            setBgClear(true);
+        else
+            setBgClear(false);
+    }
+
+    return (
+        <header
+            ref={ref}
+            className={`font-semibold fixed top-0 left-0 right-0 h-12 flex ${bgClear ? 'bg-[rgba(255,255,255,0)] dark:rgba(0,0,0,0)' : 'bg-[rgb(240,242,250)] dark:bg-[rgb(18,17,23)]'} shadow-md dark:shadow-[rgba(255,255,255,.15)] transition z-50`}
+        >
+            <div className={'flex items-center w-full max-w-7xl mx-auto'}>
+                <Link href={'/'} className={'rounded-full overflow-hidden'}>
+                    <Image src={'/logo.jpg'} alt={'logo'} width={45} height={45}/>
+                </Link>
+                <ul className={'flex'}>
+                    <NavElem href={'/catalog'}>Каталог</NavElem>
+                    <NavElem href={'/popular'}>Популярное</NavElem>
+                </ul>
+                <div className={'flex items-center grow-1 w-96 ml-auto bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(0,0,0,0.4)]'}>
+                    <input type="text" placeholder={'Я найду...'}
+                           className={'p-2 bg-transparent w-full focus:outline-0'}/>
+                    <button className={'mx-1.5'}>
+                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             strokeWidth={1.5} stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round"
+                                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+                        </svg>
+                    </button>
+                </div>
+                <ChangeThemeButton className={'p-1 mx-1'}/>
+                <Link href={'#'} className={'p-1 mx-1'}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                         stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
+                    </svg>
+                </Link>
+            </div>
+        </header>
+    );
+};
+
+export default Header;
