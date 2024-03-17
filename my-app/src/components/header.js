@@ -3,8 +3,9 @@
 import Image from 'next/image'
 import Link from "next/link";
 import ChangeThemeButton from "@/components/changeTheme";
-import {usePathname} from "next/navigation";
-import {useEffect, useRef, useState} from "react";
+import {useParams, usePathname} from "next/navigation";
+import {useEffect, useState} from "react";
+import {getTitleName} from "@/api/getAllData";
 
 const NavElem = ({href, children}) => {
     const pathname = usePathname();
@@ -28,32 +29,46 @@ const NavElem = ({href, children}) => {
 }
 
 const Header = () => {
-    const ref = useRef();
     const pathname = usePathname();
-    const [bgClear, setBgClear] = useState(false);
+    const [bgBlur, setBgBlur] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+
+    const regComics = /^\/c\/[a-zA-Z0-9_-]+$/;
+    const regReaderMode = /^\/read\/[a-zA-Z0-9_-]+$/;
+
+
+    function handleScroll() {
+        if (Math.round(document.documentElement.scrollTop) === 0)
+            setBgBlur(true);
+        else
+            setBgBlur(false);
+    }
 
     // Блюр, когда перешли на страницу типа /c/[name]
     useEffect(() => {
-        if (pathname.match(/^\/c\/[a-zA-Z0-9_-]+$/)) {
-            document.addEventListener('scroll', handleScroll);
-            setBgClear(true);
-        } else {
-            document.removeEventListener('scroll', handleScroll);
-            setBgClear(false);
+        if (pathname.match(regComics)) {
+            window.addEventListener('scroll', handleScroll);
+            setBgBlur(true);
+        }
+
+        if (pathname.match(regReaderMode)) {
+            setIsHidden(true);
+        }
+        else {
+            setIsHidden(false);
+        }
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            setBgBlur(false);
         }
     }, [pathname]);
 
-    const handleScroll = function () {
-        if (Math.round(document.documentElement.scrollTop) === 0)
-            setBgClear(true);
-        else
-            setBgClear(false);
-    }
+
 
     return (
         <header
-            ref={ref}
-            className={`font-semibold fixed top-0 left-0 right-0 h-12 flex ${bgClear ? 'bg-[rgba(255,255,255,0)] dark:rgba(0,0,0,0)' : 'bg-[rgb(240,242,250)] dark:bg-[rgb(18,17,23)]'} shadow-md dark:shadow-[rgba(255,255,255,.15)] transition z-50`}
+            className={`${isHidden && 'hidden'} font-semibold fixed top-0 left-0 right-0 h-12 flex ${bgBlur ? 'bg-[rgba(255,255,255,0)] dark:rgba(0,0,0,0)' : 'bg-[rgb(240,242,250)] dark:bg-[rgb(18,17,23)]'} shadow-md dark:shadow-[rgba(255,255,255,.15)] transition z-50`}
         >
             <div className={'flex items-center w-full max-w-7xl mx-auto'}>
                 <Link href={'/'} className={'rounded-full overflow-hidden'}>
@@ -63,7 +78,8 @@ const Header = () => {
                     <NavElem href={'/catalog'}>Каталог</NavElem>
                     <NavElem href={'/popular'}>Популярное</NavElem>
                 </ul>
-                <div className={'flex items-center grow-1 w-96 ml-auto bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(0,0,0,0.4)]'}>
+                <div
+                    className={'flex items-center grow-1 w-96 ml-auto bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(0,0,0,0.4)]'}>
                     <input type="text" placeholder={'Я найду...'}
                            className={'p-2 bg-transparent w-full focus:outline-0'}/>
                     <button className={'mx-1.5'}>

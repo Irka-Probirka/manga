@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from "react";
 
-const ChangeThemeButton = ({...props}) => {
+const ChangeThemeButton = ({className, props}) => {
     let [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const ChangeThemeButton = ({...props}) => {
     }
 
     return (
-        <button onClick={changeTheme} {...props}>
+        <button onClick={changeTheme} className={className} {...props}>
             {
                 isDark &&
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

@@ -12,10 +12,10 @@ const Page = ({params}) => {
     const team = getTeamById(title.team_id);
 
     return (
-        <ContainerWithBgImage bgLayer={title.backgroundLayer}>
+        <ContainerWithBgImage bgLayer={title.backgroundLarge}>
             <div>
                 <img src={title?.backgroundLarge} alt={'Фотка комикса'} className={'w-[300px] h-[450px] rounded mb-2'}/>
-                <Link href={'#'}
+                <Link href={`/read/${title.engTitle}`}
                       className={'flex items-center justify-center w-full h-[42px] text-white font-semibold bg-[rgb(42,91,190)] dark:bg-[rgb(86,72,178)] rounded'}>
                     Начать читать
                 </Link>
@@ -34,7 +34,7 @@ const Page = ({params}) => {
             </div>
             <div>
                 <div className={'grid grid-cols-[auto_100px] gap-4'}>
-                    <div className={'flex flex-col gap-5'}>
+                    <section className={'flex flex-col gap-5 mb-10'}>
                         <div className={'flex flex-col gap-[8px]'}>
                             <span className={'text-gray-900 leading-3'}>манга ⸱ {title?.year}</span>
                             <p className={'text-3xl font-bold'}>{title?.title}</p>
@@ -74,13 +74,13 @@ const Page = ({params}) => {
                             {/*  Коментарии и Главы  */}
                             <Chapters title={title}/>
                         </>
-                    </div>
-                    <div className={'flex flex-col gap-5 font-bold'}>
+                    </section>
+                    <section className={'flex flex-col gap-5 font-bold'}>
                         <span className={'text-green-500 text-5xl'}>
                             {title.rating}
                         </span>
                         <>
-                            <div className={'relative group/item flex items-center gap-[6px]'}>
+                            <div className={'relative group/item flex items-center gap-[6px] select-none'}>
                                 <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="rgb(9,9,9)"
                                      viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round"
@@ -95,7 +95,7 @@ const Page = ({params}) => {
                                 </span>
                             </div>
                         </>
-                    </div>
+                    </section>
                 </div>
             </div>
         </ContainerWithBgImage>

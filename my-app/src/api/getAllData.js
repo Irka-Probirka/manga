@@ -14,15 +14,14 @@ const titles = [
         team_id: 2,
         age: 16,
         hashtags: [1, 3, 4, 6, 7],
-        chapters: [1, 2, 3, 4],
+        chapters: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
-        backgroundLayer: '/peekLayer.jpeg',
     },
     {
         id: 2,
-        title: 'Месть гончей железной крови / Месть железнокровной Гончей Меча',
-        engTitle: 'lex',
+        title: 'Месть гончей железной крови',
+        engTitle: 'lexa',
         about: 'Викир был гончим псом семьи Баскервиль, пока однажды его преданность не наградили упавшим лезвием гильотины.' +
             '"Я бы никогда не стал вновь превращаться в гончую, уже поймав свою добычу."' +
             'В момент смерти его поджидала нежданная возможность.' +
@@ -35,7 +34,6 @@ const titles = [
         hashtags: [1, 3, 4, 6, 7],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
-        backgroundLayer: '/bgLayer.png',
     },
     {
         id: 3,
@@ -52,7 +50,6 @@ const titles = [
         hashtags: [1, 3, 4, 6, 7],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
-        backgroundLayer: '/bgLayer.png',
     },
     {
         id: 4,
@@ -70,16 +67,26 @@ const titles = [
         hashtags: [1, 3, 4, 6, 7],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
-        backgroundLayer: '/bgLayer.png',
     },
 ];
 
 //Главы
 const chapters = [
-    {id: 1, name: 'ТОМ 1 ГЛАВА 1', status: 'open', likes: 10},
-    {id: 2, name: 'ТОМ 1 ГЛАВА 2', status: 'open', likes: 18},
-    {id: 3, name: 'ТОМ 1 ГЛАВА 3', status: 'close', likes: 25},
-    {id: 4, name: 'ТОМ 2 ГЛАВА 4', status: 'close', likes: 40},
+    {id: 1, name: 'ТОМ 1 ГЛАВА 1', status: 'open', img: 'pic_001.png', likes: 10},
+    {id: 2, name: 'ТОМ 1 ГЛАВА 2', status: 'open', img: 'pic_002.png', likes: 18},
+    {id: 3, name: 'ТОМ 1 ГЛАВА 3', status: 'open', img: 'pic_003.png', likes: 25},
+    {id: 4, name: 'ТОМ 2 ГЛАВА 4', status: 'open', img: 'pic_004.png', likes: 40},
+    {id: 5, name: 'ТОМ 2 ГЛАВА 5', status: 'open', img: 'pic_005.png', likes: 40},
+    {id: 6, name: 'ТОМ 2 ГЛАВА 6', status: 'close', img: 'pic_006.png', likes: 40},
+    {id: 7, name: 'ТОМ 2 ГЛАВА 7', status: 'close', img: 'pic_007.png', likes: 40},
+    {id: 8, name: 'ТОМ 2 ГЛАВА 8', status: 'close', img: 'pic_008.png', likes: 40},
+    {id: 9, name: 'ТОМ 3 ГЛАВА 9', status: 'close', img: 'pic_009.png', likes: 40},
+    {id: 10, name: 'ТОМ 3 ГЛАВА 10', status: 'close', img: 'pic_010.png', likes: 40},
+    {id: 11, name: 'ТОМ 3 ГЛАВА 11', status: 'close', img: 'pic_011.png', likes: 40},
+    {id: 12, name: 'ТОМ 3 ГЛАВА 12', status: 'close', img: 'pic_012.png', likes: 40},
+    {id: 13, name: 'ТОМ 3 ГЛАВА 13', status: 'close', img: 'pic_013.png', likes: 40},
+    {id: 14, name: 'ТОМ 3 ГЛАВА 14', status: 'close', img: 'pic_014.png', likes: 40},
+    {id: 15, name: 'ТОМ 3 ГЛАВА 15', status: 'close', img: 'pic_015.png', likes: 40},
 ];
 
 //Команды
@@ -91,23 +98,23 @@ const teams = [
 
 //Хэш-теги
 const hashtags = [
-    {id: 1, tag: 'монстры'},
-    {id: 2, tag: 'насилие'},
-    {id: 3, tag: 'секс'},
-    {id: 4, tag: 'наркотики'},
-    {id: 5, tag: 'школа'},
-    {id: 6, tag: 'секс в школе'},
-    {id: 7, tag: 'я не гей, честно'},
-    {id: 8, tag: 'монстры'},
-    {id: 9, tag: 'насилие'},
-    {id: 10, tag: 'секс'},
-    {id: 11, tag: 'школа'},
-    {id: 12, tag: 'секс в школе'},
-    {id: 13, tag: 'я не гей, честно'},
-    {id: 14, tag: 'насилие'},
-    {id: 15, tag: 'секс'},
-    {id: 16, tag: 'школа'},
-    {id: 17, tag: 'секс в школе'},
+    {id: 1, tag: 'Фентези'},
+    {id: 2, tag: 'Насилие'},
+    {id: 3, tag: 'Алхимия'},
+    {id: 4, tag: 'Антигерой'},
+    {id: 5, tag: 'Школа'},
+    {id: 6, tag: 'Вестерн'},
+    {id: 7, tag: 'Фантастика'},
+    {id: 8, tag: 'Культивация'},
+    {id: 9, tag: 'Романтика'},
+    {id: 10, tag: 'ГГ мужчина'},
+    {id: 11, tag: 'Сверхъестественное'},
+    {id: 12, tag: 'Боевые искусства'},
+    {id: 13, tag: 'Экшен'},
+    {id: 14, tag: 'Приключения'},
+    {id: 15, tag: 'Сёнэн'},
+    {id: 16, tag: 'Магия'},
+    {id: 17, tag: 'Выживание'},
 ];
 
 //Жарны
@@ -124,30 +131,30 @@ const genres = [
 
 //Популярное
 const populars = [
-    {img: '/readNow.jpg', title: 'Я - Злодейка', genre: 'комикс',},
-    {img: '/readNow.jpg', title: 'Я - Андрей', genre: 'человек',},
-    {img: '/readNow.jpg', title: 'Я - Программист', genre: 'умный',},
-    {img: '/readNow.jpg', title: 'Я - Никон', genre: 'фотоаппарат',},
-    {img: '/readNow.jpg', title: 'Я - Злодейка', genre: 'комикс',},
-    {img: '/readNow.jpg', title: 'Я - Андрей', genre: 'человек',},
-    {img: '/readNow.jpg', title: 'Я - Программист', genre: 'умный',},
-    {img: '/readNow.jpg', title: 'Я - Никон', genre: 'фотоаппарат',},
-    {img: '/readNow.jpg', title: 'Я - Злодейка', genre: 'комикс',},
-    {img: '/readNow.jpg', title: 'Я - Андрей', genre: 'человек',},
-    {img: '/readNow.jpg', title: 'Я - Программист', genre: 'умный',},
-    {img: '/readNow.jpg', title: 'Я - Никон', genre: 'фотоаппарат',},
-    {img: '/readNow.jpg', title: 'Я - Злодейка', genre: 'комикс',},
-    {img: '/readNow.jpg', title: 'Я - Андрей', genre: 'человек',},
-    {img: '/readNow.jpg', title: 'Я - Программист', genre: 'умный',},
-    {img: '/readNow.jpg', title: 'Я - Никон', genre: 'фотоаппарат',},
-    {img: '/readNow.jpg', title: 'Я - Злодейка', genre: 'комикс',},
-    {img: '/readNow.jpg', title: 'Я - Андрей', genre: 'человек',},
-    {img: '/readNow.jpg', title: 'Я - Программист', genre: 'умный',},
-    {img: '/readNow.jpg', title: 'Я - Никон', genre: 'фотоаппарат',},
-    {img: '/readNow.jpg', title: 'Я - Злодейка', genre: 'комикс',},
-    {img: '/readNow.jpg', title: 'Я - Андрей', genre: 'человек',},
-    {img: '/readNow.jpg', title: 'Я - Программист', genre: 'умный',},
-    {img: '/readNow.jpg', title: 'Я - Никон', genre: 'фотоаппарат',},
+    {img: '/bgLarge.jpeg', title: 'Я - Злодейка', genre: 'комикс',},
+    {img: '/bgLarge.jpeg', title: 'Я - Андрей', genre: 'человек',},
+    {img: '/bgLarge.jpeg', title: 'Я - Программист', genre: 'умный',},
+    {img: '/bgLarge.jpeg', title: 'Я - Никон', genre: 'фотоаппарат',},
+    {img: '/bgLarge.jpeg', title: 'Я - Злодейка', genre: 'комикс',},
+    {img: '/bgLarge.jpeg', title: 'Я - Андрей', genre: 'человек',},
+    {img: '/bgLarge.jpeg', title: 'Я - Программист', genre: 'умный',},
+    {img: '/bgLarge.jpeg', title: 'Я - Никон', genre: 'фотоаппарат',},
+    {img: '/bgLarge.jpeg', title: 'Я - Злодейка', genre: 'комикс',},
+    {img: '/bgLarge.jpeg', title: 'Я - Андрей', genre: 'человек',},
+    {img: '/bgLarge.jpeg', title: 'Я - Программист', genre: 'умный',},
+    {img: '/bgLarge.jpeg', title: 'Я - Никон', genre: 'фотоаппарат',},
+    {img: '/bgLarge.jpeg', title: 'Я - Злодейка', genre: 'комикс',},
+    {img: '/bgLarge.jpeg', title: 'Я - Андрей', genre: 'человек',},
+    {img: '/bgLarge.jpeg', title: 'Я - Программист', genre: 'умный',},
+    {img: '/bgLarge.jpeg', title: 'Я - Никон', genre: 'фотоаппарат',},
+    {img: '/bgLarge.jpeg', title: 'Я - Злодейка', genre: 'комикс',},
+    {img: '/bgLarge.jpeg', title: 'Я - Андрей', genre: 'человек',},
+    {img: '/bgLarge.jpeg', title: 'Я - Программист', genre: 'умный',},
+    {img: '/bgLarge.jpeg', title: 'Я - Никон', genre: 'фотоаппарат',},
+    {img: '/bgLarge.jpeg', title: 'Я - Злодейка', genre: 'комикс',},
+    {img: '/bgLarge.jpeg', title: 'Я - Андрей', genre: 'человек',},
+    {img: '/bgLarge.jpeg', title: 'Я - Программист', genre: 'умный',},
+    {img: '/bgLarge.jpeg', title: 'Я - Никон', genre: 'фотоаппарат',},
 ];
 
 
@@ -156,8 +163,12 @@ export function getTitles() {
     return titles
 }
 
+export  function getTitleName(slug) {
+    return titles.find(item => slug === item.engTitle).title
+}
+
 export function getTitle(name) {
-    return titles.find(value => name.toString() === value.engTitle);
+    return titles.find(item => name.toString() === item.engTitle);
 }
 
 //Главы

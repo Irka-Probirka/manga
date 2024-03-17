@@ -22,10 +22,11 @@ export default function Home() {
                     return (
                         <li key={index}
                             style={{backgroundImage: `linear-gradient(to right, rgb(0, 0, 0) 20%, rgba(0, 0, 0, .2) 100%), url(${value.background})`,}}
-                            className={'text-white snap-center bg-no-repeat bg-right bg-cover rounded-xl'}
+                            className={'text-white snap-center bg-no-repeat bg-center bg-cover rounded-xl'}
                         >
-                            <Link href={'#'}
-                                  className={'block min-w-[320px] w-[80rem] max-w-7xl h-[350px] p-9'}>
+                            <Link href={'/c/andrey'}
+                                  className={'block min-w-[320px] w-[80rem] max-w-7xl h-[350px] p-9'}
+                            >
                                 <div className={'w-[450px]'}>
                                     <span>Martial peak</span>
                                     <h2 className={'text-3xl font-bold'}>
@@ -63,7 +64,7 @@ export default function Home() {
                         {genres.map((value, index) => {
                             return (
                                 <li key={index}>
-                                    <Link href={'#'}
+                                    <Link href={'/c/andrey'}
                                           className={'flex flex-col text-center px-3 py-1.5 border border-black border-solid rounded-md bg-slate-200 dark:bg-slate-800'}>
                                         <p>{value.genre}</p>
                                         <small>{value.count}</small>
@@ -81,7 +82,7 @@ export default function Home() {
                         {populars.map((value, index) => {
                             return (
                                 <li key={index}>
-                                    <Link href="#" className={'flex flex-col'}>
+                                    <Link href="/c/andrey" className={'flex flex-col'}>
                                         <Image src={value.img} alt={'Популярное'} width={150} height={228}/>
                                         <p>{value.title}</p>
                                         <small className={'leading-[.5rem]'}>
