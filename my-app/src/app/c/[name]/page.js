@@ -6,6 +6,14 @@ import SectionTitle from "@/components/sectionTitle";
 import Link from "next/link";
 import Chapters from "@/app/c/[name]/components/chapters";
 
+const ButtonSelect = ({children}) => {
+    return (
+        <div className={'flex items-center h-[48px] px-[16px] select-none cursor-pointer'}>
+            {children}
+        </div>
+    )
+}
+
 const Page = ({params}) => {
 
     const title = getTitle(params.name);
@@ -38,37 +46,27 @@ const Page = ({params}) => {
                         <div className={'flex flex-col gap-[8px]'}>
                             <span className={'text-gray-900 leading-3'}>манга ⸱ {title?.year}</span>
                             <p className={'text-3xl font-bold'}>{title?.title}</p>
-                            <p>Название на английском: {title.engTitle}</p>
+                            {/*<p>Название на английском: {title.engTitle}</p>*/}
                             <ul className={'flex'}>
                                 <li className={'flex items-center px-[12px] mr-[8px] h-[24px] text-[12px] tracking-tighter text-[rgb(255,152,0)] font-bold rounded bg-[rgba(203,206,214,.6)] dark:bg-[rgba(52,49,69,.3)] select-none'}>
                                     {title?.age}+
                                 </li>
-                                {
-                                    title.hashtags?.map((id_hashtag, index) => {
-                                        const hashtag = getHashtagById(id_hashtag);
-                                        return (
-                                            <li key={index}
-                                                className={'px-[12px] mx-[8px] h-[24px] text-sm rounded bg-[rgba(203,206,214,.6)] dark:bg-[rgba(52,49,69,.3)] font-semibold select-none'}
-                                            >
-                                                {hashtag.tag}
-                                            </li>
-                                        )
-                                    })
-                                }
+                                {title.hashtags?.map((id_hashtag, index) => {
+                                    const hashtag = getHashtagById(id_hashtag);
+                                    return (
+                                        <li key={index}
+                                            className={'px-[12px] mx-[8px] h-[24px] text-sm rounded bg-[rgba(203,206,214,.6)] dark:bg-[rgba(52,49,69,.3)] font-semibold select-none'}
+                                        >
+                                            {hashtag.tag}
+                                        </li>
+                                    )
+                                })}
                             </ul>
                             <p className={'leading-5 tracking-tight'}>{title.about}</p>
                         </div>
                         <div className={'flex text-[rgb(9,9,9)] dark:text-[rgb(236,236,236)] uppercase'}>
-                            <div
-                                className={'flex items-center h-[48px] px-[16px] select-none cursor-pointer'}
-                            >
-                                Коментарии
-                            </div>
-                            <div
-                                className={'flex items-center h-[48px] px-[16px] select-none cursor-pointer'}
-                            >
-                                Главы
-                            </div>
+                            <ButtonSelect>Главы</ButtonSelect>
+                            {/*<ButtonSelect>Коментарии</ButtonSelect>*/}
                         </div>
                         <>
                             {/*  Коментарии и Главы  */}

@@ -30,8 +30,11 @@ const titles = [
             'Настало время гончему псу кроваво отомстить своему хозяину.',
         year: '2024',
         rating: 4.4,
+        bookmarks: 128,
         team_id: 2,
+        age: 12,
         hashtags: [1, 3, 4, 6, 7],
+        chapters: [16, 17, 18, 19, 20, 21, 22],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
     },
@@ -46,8 +49,11 @@ const titles = [
             'наш главный герой, Ян Кай, может быть исключен из Небесной Башни!',
         year: '2024',
         rating: 4.4,
+        bookmarks: 28,
         team_id: 2,
+        age: 18,
         hashtags: [1, 3, 4, 6, 7],
+        chapters: [16, 17, 18, 19, 20, 21, 22],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
     },
@@ -63,8 +69,11 @@ const titles = [
             'Настало время гончему псу кроваво отомстить своему хозяину.',
         year: '2024',
         rating: 4.4,
+        bookmarks: 92,
         team_id: 2,
+        age: 6,
         hashtags: [1, 3, 4, 6, 7],
+        chapters: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         background: '/image.jpg',
         backgroundLarge: '/bgLarge.jpeg',
     },
@@ -77,9 +86,9 @@ const chapters = [
     {id: 3, name: 'ТОМ 1 ГЛАВА 3', status: 'open', img: 'pic_003.png', likes: 25},
     {id: 4, name: 'ТОМ 2 ГЛАВА 4', status: 'open', img: 'pic_004.png', likes: 40},
     {id: 5, name: 'ТОМ 2 ГЛАВА 5', status: 'open', img: 'pic_005.png', likes: 40},
-    {id: 6, name: 'ТОМ 2 ГЛАВА 6', status: 'close', img: 'pic_006.png', likes: 40},
-    {id: 7, name: 'ТОМ 2 ГЛАВА 7', status: 'close', img: 'pic_007.png', likes: 40},
-    {id: 8, name: 'ТОМ 2 ГЛАВА 8', status: 'close', img: 'pic_008.png', likes: 40},
+    {id: 6, name: 'ТОМ 2 ГЛАВА 6', status: 'open', img: 'pic_006.png', likes: 40},
+    {id: 7, name: 'ТОМ 2 ГЛАВА 7', status: 'open', img: 'pic_007.png', likes: 40},
+    {id: 8, name: 'ТОМ 2 ГЛАВА 8', status: 'open', img: 'pic_008.png', likes: 40},
     {id: 9, name: 'ТОМ 3 ГЛАВА 9', status: 'close', img: 'pic_009.png', likes: 40},
     {id: 10, name: 'ТОМ 3 ГЛАВА 10', status: 'close', img: 'pic_010.png', likes: 40},
     {id: 11, name: 'ТОМ 3 ГЛАВА 11', status: 'close', img: 'pic_011.png', likes: 40},
@@ -87,6 +96,13 @@ const chapters = [
     {id: 13, name: 'ТОМ 3 ГЛАВА 13', status: 'close', img: 'pic_013.png', likes: 40},
     {id: 14, name: 'ТОМ 3 ГЛАВА 14', status: 'close', img: 'pic_014.png', likes: 40},
     {id: 15, name: 'ТОМ 3 ГЛАВА 15', status: 'close', img: 'pic_015.png', likes: 40},
+    {id: 16, name: 'ТОМ 1 ГЛАВА 1', status: 'open', img: 'Без имени-1.png', likes: 40},
+    {id: 17, name: 'ТОМ 1 ГЛАВА 2', status: 'open', img: 'Без имени-2.png', likes: 40},
+    {id: 18, name: 'ТОМ 1 ГЛАВА 3', status: 'open', img: 'Без имени-3.png', likes: 40},
+    {id: 19, name: 'ТОМ 1 ГЛАВА 4', status: 'close', img: 'Без имени-4.png', likes: 40},
+    {id: 20, name: 'ТОМ 1 ГЛАВА 5', status: 'close', img: 'Без имени-5.png', likes: 40},
+    {id: 21, name: 'ТОМ 1 ГЛАВА 6', status: 'close', img: 'Без имени-6.png', likes: 40},
+    {id: 22, name: 'ТОМ 1 ГЛАВА 7', status: 'close', img: 'Без имени-7.png', likes: 40},
 ];
 
 //Команды
@@ -178,6 +194,14 @@ export function getChapterWithTitle(title) {
         my_chapters.push(chapters.find(item => item.id === title_chapter));
     })
     return my_chapters;
+}
+
+export function getFirstChapter(title_eng) {
+    return titles.find(item => item.engTitle === title_eng).chapters[0]
+}
+
+export function getChapterName(chapter_id) {
+    return chapters.find(item => item.id === chapter_id).name
 }
 
 //Хэштеги

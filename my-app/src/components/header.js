@@ -65,7 +65,6 @@ const Header = () => {
     }, [pathname]);
 
 
-
     return (
         <header
             className={`${isHidden && 'hidden'} font-semibold fixed top-0 left-0 right-0 h-12 flex ${bgBlur ? 'bg-[rgba(255,255,255,0)] dark:rgba(0,0,0,0)' : 'bg-[rgb(240,242,250)] dark:bg-[rgb(18,17,23)]'} shadow-md dark:shadow-[rgba(255,255,255,.15)] transition z-50`}
