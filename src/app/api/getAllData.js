@@ -222,16 +222,12 @@ export async function getUserByName(name) {
 }
 
 export async function getUserById(id) {
-    try {
-        const user = users.find(user => user.id === id)
-        if (!user) {
-            return new Error('Пользователь не найден');
-        }
-        return user
-    } catch (error) {
-        console.log('Error: ', error);
-        return null
-    }
+
+    const user = users.find(user => user.id == id);
+    if (user === undefined) return null
+
+    return user
+
 }
 
 

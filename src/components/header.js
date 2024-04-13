@@ -42,7 +42,6 @@ const Header = () => {
     const regReaderMode = /^\/read\/[a-zA-Z0-9_-]+$/;
 
     const user = useCurrentUser();
-    console.log('user: ', user);
 
     function handleScroll() {
         if (Math.round(document.documentElement.scrollTop) === 0)

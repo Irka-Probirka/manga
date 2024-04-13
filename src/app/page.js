@@ -15,7 +15,7 @@ export default async function Home() {
     const populars = await getPartPopular();
 
     return (
-        <div className={'pt-16'}>
+        <>
             <ul className={'snap-x snap-mandatory flex gap-6 overflow-x-scroll mb-16 px-[12rem]'}
                 style={{scrollbarWidth: 'none', scrollbarHeight: 'none', '&::WebkitScrollbar': {width: 0, height: 0}}}
             >
@@ -100,6 +100,6 @@ export default async function Home() {
                     <p>Какой-то текст, типо обновления</p>
                 </Section>
             </Layout>
-        </div>
+        </>
     );
 }

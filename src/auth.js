@@ -39,40 +39,28 @@ export const {handlers: {GET, POST}, auth, signIn, signOut} = NextAuth({
     callbacks: {
         async session({ session, token }){
 
-            // if (session.user) {
-            //     session.user = token.user;
-            // }
-            // console.log('SESSION: ', session);
-            // console.log('TOKEN: ', token);
+            if (session.user && token.role) {
+                session.user.role = token.role;
+            }
 
             return session
         },
         async jwt({ token }) {
-            // if (!token.sub) return token
-            //
-            // const user = await getUserById(token.sub)
-            // if (!user) return token
-            //
-            // token.user = user;
 
-            // console.log('TOKEN_USER: ', token?.user, ' date: ', Date.now());
+            // Для проверки авторизации через Гугл
+            if (!/^\d+$/.test(token.sub)){
+                token.role = 'user';
+                return token
+            }
+
+            // Для авторизации через БД (пока что файл getAllData)
+            const user = await getUserById(token.sub);
+            if (!user) return token
+
+            token.role = user.role;
 
             return token
         },
-        async signIn({ user }) {
-            /*
-            * Выводит данные типа:
-            * USER:  {
-                id: '97655cbe-e083-404b-8925-e1fc0d56e4a1',
-                name: 'Андрей',
-                email: 'ankuznetsov42@gmail.com',
-                image: 'https://lh3.googleusercontent.com/a/ACg8ocLDsW78zphlJkfAdBLAmHyVZEf_GnMlfydog515ejqWBnC3dso=s96-c'
-              }
-            * */
-            // console.log("USER: ", user);
-
-            return true
-        }
     },
     pages: {
         // signIn: '/auth/signin',

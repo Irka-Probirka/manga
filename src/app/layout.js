@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import {SessionProvider} from "next-auth/react";
 import {auth} from "@/auth";
+import ErrorMessageBox from "@/components/errorMessageBox";
 
 export const metadata = {
     title: {
@@ -24,10 +25,11 @@ export default async function RootLayout({children}) {
         <SessionProvider session={session}>
             <body className={`${mainFont.className} flex flex-col dark:text-white min-h-[100vh] h-full`}>
             <Header/>
-            <main className={'grow bg-white dark:bg-[rgb(11,11,15)]'}>
+            <main className={'grow bg-white dark:bg-[rgb(11,11,15)] mt-20'}>
                 {children}
             </main>
             <Footer/>
+            {/*<ErrorMessageBox />*/}
             </body>
         </SessionProvider>
         </html>

@@ -5,7 +5,7 @@ import ChaptersSkeleton from "@/app/c/[name]/components/chaptersSkeleton";
 
 const Loading = () => {
     return (
-        <div className={'max-w-7xl pt-20 mx-auto grid gap-[24px] grid-cols-[300px_1fr] z-[2]'}>
+        <div className={'max-w-7xl mx-auto grid gap-[24px] grid-cols-[300px_1fr] z-[2]'}>
             <div>
                 <div className={'w-[300px] h-[440px] animate-pulse rounded mb-2 bg-slate-200 dark:bg-slate-700'}/>
                 <div className={'w-full h-[42px] animate-pulse bg-[rgb(42,91,190)] dark:bg-[rgb(86,72,178)] rounded'}/>

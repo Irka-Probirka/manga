@@ -18,6 +18,13 @@ module.exports = {
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
+        'opacity': 'opacity 1s linear',
+      },
+      keyframes: {
+        opacity: {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0 },
+        }
       }
     },
     backgroundPosition: {
