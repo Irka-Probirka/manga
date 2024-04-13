@@ -4,19 +4,24 @@ import {useEffect, useState} from "react";
 import {useLocalStorage} from "@/hooks/useLocalStorage";
 
 const ChangeThemeButton = () => {
-    const [isDark, setIsDark] = useState(false);
+
+    const [isDark, setIsDark] = useLocalStorage('theme', 'light');
 
     useEffect(() => {
-        setIsDark(document.querySelector('html').classList.contains('dark'));
-    });
+        const html = document.querySelector('html');
+        if (isDark === 'dark') {
+            html.classList.add('dark');
+        }
+    }, []);
 
     function changeTheme() {
-        if (!isDark) {
+        if (isDark === 'light') {
+            setIsDark('dark');
             document.querySelector('html').classList.add('dark');
-            setIsDark(prev => !prev);
-        } else {
+        }
+        else {
+            setIsDark('light');
             document.querySelector('html').removeAttribute('class');
-            setIsDark(prev => !prev);
         }
     }
 
@@ -25,9 +30,8 @@ const ChangeThemeButton = () => {
             onClick={changeTheme}
             className={'animate-entryExit'}
         >
-            {
-                isDark ?
-                    //
+            {(isDark === 'light')
+                    ?
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                          stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round"

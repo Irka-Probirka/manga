@@ -31,6 +31,28 @@ const NavElem = ({href, children}) => {
     )
 }
 
+const UserNavigate = () => {
+    const user = useCurrentUser();
+
+    if (user) {
+        return (
+            <Link href={'/profile'} className={'p-1 mx-1'}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                     stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round"
+                          d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
+                </svg>
+            </Link>
+        )
+    }
+
+    return (
+        <Link href={'/api/auth/signin'} className={'ml-[10px] px-[10px] py-[4px] bg-indigo-600 rounded text-white'}>
+            Войти
+        </Link>
+    )
+}
+
 
 const Header = () => {
     const pathname = usePathname();
@@ -40,8 +62,6 @@ const Header = () => {
     const regComics = /^\/c\/[a-zA-Z0-9_-]+$/;
     const regTeam = /^\/t\/[0-9]+$/;
     const regReaderMode = /^\/read\/[a-zA-Z0-9_-]+$/;
-
-    const user = useCurrentUser();
 
     function handleScroll() {
         if (Math.round(document.documentElement.scrollTop) === 0)
@@ -72,7 +92,14 @@ const Header = () => {
 
     return (
         <header
-            className={`${isHidden && 'hidden'} font-semibold fixed top-0 left-0 right-0 py-[2px] flex ${bgBlur ? 'bg-[rgba(255,255,255,0)] dark:rgba(0,0,0,0)' : 'bg-[rgb(240,242,250)] dark:bg-[rgb(18,17,23)]'} dark:shadow-[rgba(255,255,255,.15)] transition z-20`}
+            className={
+                `${isHidden && 'hidden'}
+                ${bgBlur
+                    ? 'bg-[rgba(255,255,255,0)] dark:rgba(0,0,0,0)'
+                    : 'bg-[rgb(240,242,250)] dark:bg-[rgb(18,17,23)]'} 
+                font-semibold fixed top-0 left-0 right-0 
+                py-[2px] flex dark:shadow-[rgba(255,255,255,.15)] transition z-20`
+            }
         >
             <div className={'flex items-center w-full max-w-7xl mx-auto'}>
                 <Link href={'/'} className={'rounded-full overflow-hidden'}>
@@ -95,26 +122,7 @@ const Header = () => {
                     </button>
                 </div>
                 <ChangeThemeButton/>
-                {
-                    user ?
-                        <Link
-                            href={'/profile'}
-                            className={'p-1 mx-1'}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
-                                 stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round"
-                                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
-                            </svg>
-                        </Link>
-                        :
-                        <Link
-                            href={'/api/auth/signin'}
-                            className={'ml-[10px] px-[10px] py-[4px] bg-indigo-600 rounded text-white'}
-                        >
-                            Войти
-                        </Link>
-                }
+                <UserNavigate/>
             </div>
         </header>
     );
