@@ -11,9 +11,6 @@ export const metadata = {
         template: 'Haren | %s',
         default: 'Haren', // a default is required when creating a template
     },
-    icons: {
-        icon: '/logo.jpg',
-    },
 }
 
 export default async function RootLayout({children}) {

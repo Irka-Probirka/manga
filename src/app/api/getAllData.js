@@ -232,8 +232,10 @@ export async function getUserById(id) {
 
 
 // Тайтлы
-export async function getTitles() {
-    return titles
+export function getTitles(count = undefined) {
+    if (!count) return titles
+
+    return titles.filter((item, index) => index < count)
 }
 
 // export function getTitleName(myName) {

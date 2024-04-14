@@ -28,7 +28,7 @@ const ChangeThemeButton = () => {
     return (
         <button
             onClick={changeTheme}
-            className={'animate-entryExit'}
+            className={'animate-entryExit z-[31]'}
         >
             {(isDark === 'light')
                     ?
