@@ -16,7 +16,7 @@ export default async function Home() {
 
     return (
         <>
-            <ul className={'snap-x snap-mandatory flex gap-6 overflow-x-scroll mb-16 px-[12rem]'}
+            <ul className={'snap-x snap-mandatory flex gap-6 overflow-x-scroll mb-16 px-[12rem] pt-20'}
                 style={{scrollbarWidth: 'none', scrollbarHeight: 'none', '&::WebkitScrollbar': {width: 0, height: 0}}}
             >
                 {titles.map((value, index) => {

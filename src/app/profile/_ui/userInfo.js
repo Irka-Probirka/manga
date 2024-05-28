@@ -8,12 +8,7 @@ const UserInfo = () => {
 
     const user = useCurrentUser();
 
-    return (
-        <div>
-            <p>Имя: {user?.name}</p>
-            <p>Роль: {user?.role}</p>
-        </div>
-    );
+    return user?.name
 };
 
 export default UserInfo;

@@ -1,7 +1,7 @@
 const ContainerWithBgImage = ({bgLayer, children}) => {
 
     return (
-        <div className={'bg-white dark:bg-black'}>
+        <div className={'bg-white dark:bg-black pt-20'}>
             <div
                 style={{backgroundImage: `url(${bgLayer})`}}
                 className={'absolute top-0 w-full h-[700px] bg-no-repeat bg-cover bg-center z-0'}

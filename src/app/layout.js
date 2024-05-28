@@ -22,7 +22,7 @@ export default async function RootLayout({children}) {
         <SessionProvider session={session}>
             <body className={`${mainFont.className} flex flex-col dark:text-white min-h-[100vh] h-full`}>
             <Header/>
-            <main className={'grow bg-white dark:bg-[rgb(11,11,15)] pt-20'}>
+            <main className={'grow bg-white dark:bg-[rgb(11,11,15)] '}>
                 {children}
             </main>
             <Footer/>
